@@ -1,5 +1,5 @@
-// const carService = {
-//     search:()=>{
-//         return ['Chevrolet'];
-//    }
-// };
+const carService = {
+    search:(id)=>{
+        return ['Chevrolet'];
+}
+};
