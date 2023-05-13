@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require('body-parser');
-//const logging = require('./middleware');
-const {personRouter, carRouter} = require('./routes');
+const logging = require('./middleware');
+const {userRouter} = require('./routes');
 const {initializeDB} = require('./config/dbConfig');
 
 //const res = require("express/lib/response");
@@ -11,9 +11,11 @@ app.use(express.json());
 
 
 //persons
-app.use ("/persons", personRouter);
-//cars
-app.use("/cars", carRouter)
+// app.use ("/persons", personRouter);
+// //cars
+// app.use("/cars", carRouter);
+
+app.use("/user", userRouter);
 
 app.listen(PORT, async () => {
     await initializeDB();
