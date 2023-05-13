@@ -1,19 +1,27 @@
 const express = require("express");
+const bodyParser = require('body-parser');
+//const logging = require('./middleware');
+const {personRouter, carRouter} = require('./routes');
+const {initializeDB} = require('./config/dbConfig');
 
 //const res = require("express/lib/response");
 const app = express();
 const PORT = 3000;
 app.use(express.json());
 
-const {personRouter, carRouter} = require('./routes')
+
 //persons
 app.use ("/persons", personRouter);
 //cars
 app.use("/cars", carRouter)
 
-app.listen(PORT, ()=>{
-    console.log(`service started on port ${PORT}`);
+app.listen(PORT, async () => {
+    await initializeDB();
+    console.log(`Hello world! Este es nuestro primer server. Escuchando peticiones en el puerto: ${PORT}`
+    );
 });
+
+
 
 
 
